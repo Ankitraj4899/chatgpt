@@ -1,0 +1,72 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.chatgpt__sidebar {
+    color: #777;
+    &--nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 1em 0.1em 1em;
+    }
+
+    overflow-y: scroll;
+
+    &--top {
+        display: flex;
+        justify-content: flex-start;
+        // align-items: center;
+        flex-direction: column;
+        padding: 1em;
+        gap: 0.7em;
+
+        .chat {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0.7em;
+        }
+    }
+
+    &--bottom {
+        display: flex;
+        justify-content: flex-start;
+        // align-items: center;
+        flex-direction: column;
+        padding: 1em;
+        gap: 0.7em;
+    }
+
+    &--footer {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // align-items: center;
+        width: 20vw;
+        height: 5rem;
+        padding: 1em;
+        padding-top: 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+
+        div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .offer--btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.3em;
+            border-radius: 1em;
+            background-color: transparent;
+            border: 1px solid gray;
+        }
+    }
+}

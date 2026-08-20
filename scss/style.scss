@@ -1,0 +1,28 @@
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+@use "base/reset";
+
+@use "layout/sidebar";
+@use "layout/chat";
+
+@use "components/button";
+@use "components/chat-item";
+@use "components/input";
+
+body {
+    overflow-x: hidden;
+}
+
+.chatgpt {
+    display: grid;
+    grid-template-columns: 20vw 80vw;
+    gap: 1rem;
+
+}
+
+// @media(max-width:576px) {
+//     .chatgpt {
+//         grid-template-columns: 1fr;
+//     }
+// }
