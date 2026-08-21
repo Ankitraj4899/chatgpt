@@ -8,9 +8,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.chatgpt__sidebar {
-  height: 100vh;
-}
 .chatgpt__sidebar::-webkit-scrollbar {
   width: 8px;
 }
@@ -139,7 +136,8 @@ body {
   min-width: 0;
   height: 100vh;
   background-color: #fff;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .chatgpt__content--top {
   width: 100%;
@@ -412,7 +410,8 @@ body {
   display: grid;
   grid-template-columns: 20vw 80vw;
   gap: 1rem;
-  width: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @media (max-width: 800px) {

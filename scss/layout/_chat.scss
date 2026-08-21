@@ -11,8 +11,8 @@
 
         background-color: $white-color;
 
-        // overflow: hidden;
-        overflow-y: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
 
         &--top {
             width: 100%;

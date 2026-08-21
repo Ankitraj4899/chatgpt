@@ -19,7 +19,8 @@ body {
     display: grid;
     grid-template-columns: 20vw 80vw;
     gap: 1rem;
-    width: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 @media(max-width:800px) {
