@@ -2,7 +2,28 @@
 @use "../abstracts/mixins" as *;
 
 .chatgpt__sidebar {
-    color: #777;
+    overflow-y: scroll;
+    height: 100vh;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        // height: 1px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #c5c5c5;
+        border-radius: 10px;
+        height: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #999;
+    }
+
     &--nav {
         display: flex;
         justify-content: space-between;
@@ -10,7 +31,30 @@
         padding: 1em 1em 0.1em 1em;
     }
 
-    overflow-y: scroll;
+    .chat-logo {
+        color: $black-color;
+        font-weight: 600;
+        font-size: large;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    .search-icon {
+        filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
+    }
+
+    .sidebar-icon {
+        filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
+
+    }
+
+    .chat {
+        color: $black-color
+    }
+
 
     &--top {
         display: flex;
@@ -19,6 +63,9 @@
         flex-direction: column;
         padding: 1em;
         gap: 0.7em;
+        font-size: 0.95em;
+        font-weight: 100;
+        color: #2b2727;
 
         .chat {
             display: flex;
@@ -35,6 +82,17 @@
         flex-direction: column;
         padding: 1em;
         gap: 0.7em;
+        height: 100em;
+
+        .chat-item {
+            font-size: 0.95em;
+            font-weight: 100;
+            color: #2b2727;
+        }
+
+        .chat-title {
+            color: $gray-color;
+        }
     }
 
     &--footer {
@@ -59,9 +117,10 @@
         }
 
         .offer--btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            @include flex-center(row);
             gap: 8px;
             padding: 0.3em;
             border-radius: 1em;

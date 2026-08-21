@@ -9,7 +9,22 @@ body {
 }
 
 .chatgpt__sidebar {
-  color: #777;
+  overflow-y: scroll;
+  height: 100vh;
+}
+.chatgpt__sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.chatgpt__sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chatgpt__sidebar::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+  height: 1rem;
+}
+.chatgpt__sidebar::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 .chatgpt__sidebar--nav {
   display: flex;
@@ -17,8 +32,23 @@ body {
   align-items: center;
   padding: 1em 1em 0.1em 1em;
 }
-.chatgpt__sidebar {
-  overflow-y: scroll;
+.chatgpt__sidebar .chat-logo {
+  color: #000;
+  font-weight: 600;
+  font-size: large;
+}
+.chatgpt__sidebar button {
+  background-color: transparent;
+  border: none;
+}
+.chatgpt__sidebar .search-icon {
+  filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
+}
+.chatgpt__sidebar .sidebar-icon {
+  filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
+}
+.chatgpt__sidebar .chat {
+  color: #000;
 }
 .chatgpt__sidebar--top {
   display: flex;
@@ -26,6 +56,9 @@ body {
   flex-direction: column;
   padding: 1em;
   gap: 0.7em;
+  font-size: 0.95em;
+  font-weight: 100;
+  color: #2b2727;
 }
 .chatgpt__sidebar--top .chat {
   display: flex;
@@ -39,6 +72,15 @@ body {
   flex-direction: column;
   padding: 1em;
   gap: 0.7em;
+  height: 100em;
+}
+.chatgpt__sidebar--bottom .chat-item {
+  font-size: 0.95em;
+  font-weight: 100;
+  color: #2b2727;
+}
+.chatgpt__sidebar--bottom .chat-title {
+  color: #777;
 }
 .chatgpt__sidebar--footer {
   position: fixed;
@@ -61,8 +103,9 @@ body {
 }
 .chatgpt__sidebar--footer .offer--btn {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 8px;
   padding: 0.3em;
   border-radius: 1em;
@@ -76,7 +119,8 @@ body {
   min-width: 0;
   height: 100vh;
   background-color: #fff;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-y: auto;
 }
 .chatgpt__content--top {
   width: 100%;
@@ -107,7 +151,7 @@ body {
   width: 18px;
   height: 18px;
   display: block;
-  filter: invert(48%) sepia(82%) saturate(2171%) hue-rotate(200deg) brightness(101%) contrast(93%);
+  filter: invert(48%);
 }
 .chatgpt__content--top .offer--btn:hover {
   background-color: rgb(199, 199, 212);
@@ -137,6 +181,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 .chatgpt__content--middle h1 {
   margin: 0 0 52px;
@@ -156,7 +201,7 @@ body {
   border: 1px solid #e5e5e5;
   border-radius: 40px;
   background-color: #fff;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 4px 25px rgba(0, 0, 0, 0.08);
 }
 .chatgpt__suggestions {
   width: 100%;
@@ -193,7 +238,7 @@ body {
   outline: none;
   background: transparent;
   color: #171717;
-  font-size: 20px;
+  font-size: 1.2rem;
 }
 .search__input::-moz-placeholder {
   color: #929292;
@@ -204,7 +249,7 @@ body {
 .search__actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.7em;
   flex-shrink: 0;
 }
 .search__think {
@@ -283,9 +328,59 @@ body {
   color: #333;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 800px) {
   .chatgpt__sidebar {
     display: none;
+  }
+  .chatgpt__content {
+    width: 100%;
+    height: 100vh;
+  }
+  .chatgpt__content--top {
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
+  .chatgpt__content--middle {
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-30%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chatgpt__content--middle h1 {
+    display: none;
+  }
+  .chatgpt__search {
+    width: calc(100% - 100px);
+    height: 50px;
+    order: 2;
+  }
+  .chatgpt__suggestions {
+    width: calc(100% - 100px);
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 24px;
+    gap: 25px;
+    order: 1;
+  }
+  .suggestion {
+    width: 100%;
+    gap: 128px;
+  }
+  .suggestion img {
+    width: 20px;
+    height: 20px;
+  }
+  .suggestion span {
+    font-size: 17px;
+  }
+  .search__think {
+    display: none;
+  }
+  .search__input {
+    font-size: 16px;
   }
 }
 body {
@@ -296,4 +391,10 @@ body {
   display: grid;
   grid-template-columns: 20vw 80vw;
   gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .chatgpt {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=style.css.map */
