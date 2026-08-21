@@ -13,7 +13,7 @@
 
         // overflow: hidden;
         overflow-y: scroll;
-        overflow-y: auto;   
+        overflow-y: auto;
 
         &--top {
             width: 100%;
@@ -54,7 +54,7 @@
                     width: 18px;
                     height: 18px;
                     display: block;
-                    filter: invert(48%);
+                    filter: invert(48%) sepia(82%) saturate(2171%) hue-rotate(200deg) brightness(101%) contrast(93%);
                 }
             }
 

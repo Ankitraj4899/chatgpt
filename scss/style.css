@@ -151,7 +151,7 @@ body {
   width: 18px;
   height: 18px;
   display: block;
-  filter: invert(48%);
+  filter: invert(48%) sepia(82%) saturate(2171%) hue-rotate(200deg) brightness(101%) contrast(93%);
 }
 .chatgpt__content--top .offer--btn:hover {
   background-color: rgb(199, 199, 212);
