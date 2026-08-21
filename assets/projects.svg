@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-kanban-icon lucide-folder-kanban"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><path d="M8 10v4"/><path d="M12 10v2"/><path d="M16 10v6"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Outer folder path -->
+  <path d="M 4 6 
+           C 4 4.5 5 4 7 4 
+           L 9.5 4 
+           C 10.8 4 11.7 4.8 12.5 5.7 
+           L 13 6 
+           L 17 6 
+           C 19 6 20 7 20 9 
+           L 20 17 
+           C 20 19 19 20 17 20 
+           L 7 20 
+           C 5 20 4 19 4 17 
+           Z" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="1.8" 
+        stroke-linejoin="round" 
+        stroke-linecap="round" />
+  
+  <!-- Middle line -->
+  <line x1="4" y1="10" x2="20" y2="10" 
+        stroke="currentColor" 
+        stroke-width="1.8" 
+        stroke-linecap="round" />
+</svg>

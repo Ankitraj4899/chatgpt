@@ -49,6 +49,8 @@ body {
 }
 .chatgpt__sidebar .chat {
   color: #000;
+  font-size: 0.9em;
+  font-weight: 100;
 }
 .chatgpt__sidebar--top {
   display: flex;
@@ -66,18 +68,30 @@ body {
   align-items: center;
   gap: 0.7em;
 }
+.chatgpt__sidebar--top .chat:hover {
+  background-color: #e3e3e3;
+  padding: 0.3em;
+  border-radius: 1em;
+  cursor: pointer;
+}
 .chatgpt__sidebar--bottom {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   padding: 1em;
   gap: 0.7em;
-  height: 100em;
+  height: auto;
 }
 .chatgpt__sidebar--bottom .chat-item {
-  font-size: 0.95em;
+  color: #000;
+  font-size: 0.9em;
   font-weight: 100;
-  color: #2b2727;
+  cursor: pointer;
+}
+.chatgpt__sidebar--bottom .chat-item:hover {
+  background-color: #e3e3e3;
+  padding: 0.5em;
+  border-radius: 1em;
 }
 .chatgpt__sidebar--bottom .chat-title {
   color: #777;
@@ -253,6 +267,7 @@ body {
   flex-shrink: 0;
 }
 .search__think {
+  filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -304,6 +319,7 @@ body {
 }
 
 .suggestion {
+  filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
   width: -moz-fit-content;
   width: fit-content;
   display: flex;

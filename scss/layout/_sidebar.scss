@@ -52,7 +52,9 @@
     }
 
     .chat {
-        color: $black-color
+        color: $black-color;
+        font-size: 0.9em;
+        font-weight: 100;
     }
 
 
@@ -73,6 +75,13 @@
             align-items: center;
             gap: 0.7em;
         }
+
+        .chat:hover {
+            background-color: #e3e3e3;
+            padding: 0.3em;
+            border-radius: 1em;
+            cursor: pointer;
+        }
     }
 
     &--bottom {
@@ -82,13 +91,21 @@
         flex-direction: column;
         padding: 1em;
         gap: 0.7em;
-        height: 100em;
+        height: auto;
 
         .chat-item {
-            font-size: 0.95em;
+            color: $black-color;
+            font-size: 0.9em;
             font-weight: 100;
-            color: #2b2727;
+            cursor: pointer;
         }
+
+        .chat-item:hover {
+            background-color: #e3e3e3;
+            padding: 0.5em;
+            border-radius: 1em;
+        }
+
 
         .chat-title {
             color: $gray-color;

@@ -204,6 +204,8 @@
     }
 
     &__think {
+        filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
+
         display: flex;
         align-items: center;
 
@@ -250,6 +252,7 @@
     }
 
     &__voice {
+
         width: 30px;
         height: 30px;
 
@@ -277,6 +280,8 @@
 }
 
 .suggestion {
+    filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
+
     width: fit-content;
 
     display: flex;
