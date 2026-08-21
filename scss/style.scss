@@ -19,7 +19,7 @@ body {
     display: grid;
     grid-template-columns: 20vw 80vw;
     gap: 1rem;
-
+    width: 100vh;
 }
 
 @media(max-width:800px) {

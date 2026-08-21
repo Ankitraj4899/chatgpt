@@ -9,7 +9,6 @@ body {
 }
 
 .chatgpt__sidebar {
-  overflow-y: scroll;
   height: 100vh;
 }
 .chatgpt__sidebar::-webkit-scrollbar {
@@ -36,6 +35,7 @@ body {
   color: #000;
   font-weight: 600;
   font-size: large;
+  padding-left: 0.4em;
 }
 .chatgpt__sidebar button {
   background-color: transparent;
@@ -52,6 +52,11 @@ body {
   font-size: 0.9em;
   font-weight: 100;
 }
+.chatgpt__sidebar .chatgpt__middle {
+  flex: 1;
+  overflow-y: scroll;
+  height: 100vh;
+}
 .chatgpt__sidebar--top {
   display: flex;
   justify-content: flex-start;
@@ -67,11 +72,11 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 0.7em;
+  padding: 0.4em;
 }
 .chatgpt__sidebar--top .chat:hover {
   background-color: #e3e3e3;
-  padding: 0.3em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   cursor: pointer;
 }
 .chatgpt__sidebar--bottom {
@@ -85,16 +90,17 @@ body {
 .chatgpt__sidebar--bottom .chat-item {
   color: #000;
   font-size: 0.9em;
+  padding: 0.4em;
   font-weight: 100;
   cursor: pointer;
 }
 .chatgpt__sidebar--bottom .chat-item:hover {
   background-color: #e3e3e3;
-  padding: 0.5em;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 .chatgpt__sidebar--bottom .chat-title {
   color: #777;
+  padding: 0.4em;
 }
 .chatgpt__sidebar--footer {
   position: fixed;
@@ -134,7 +140,6 @@ body {
   height: 100vh;
   background-color: #fff;
   overflow-y: scroll;
-  overflow-y: auto;
 }
 .chatgpt__content--top {
   width: 100%;
@@ -407,6 +412,7 @@ body {
   display: grid;
   grid-template-columns: 20vw 80vw;
   gap: 1rem;
+  width: 100vh;
 }
 
 @media (max-width: 800px) {
