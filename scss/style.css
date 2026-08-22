@@ -706,6 +706,7 @@ body {
 .search__think img {
   width: 26px;
   height: 26px;
+  opacity: 0.6;
   display: block;
 }
 .search__mic {
