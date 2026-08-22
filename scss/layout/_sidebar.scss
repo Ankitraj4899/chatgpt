@@ -18,23 +18,6 @@
         width 0.25s ease,
         transform 0.25s ease;
 
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #c5c5c5;
-        border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: #999;
-    }
-
     &--nav {
         flex-shrink: 0;
 
@@ -121,27 +104,106 @@
         overflow-y: auto;
         overflow-x: hidden;
 
-        .chat-item {
-            flex-shrink: 0;
-
-            color: $black-color;
-            font-size: 0.9em;
-            padding: 0.4em;
-            font-weight: 100;
-
-            cursor: pointer;
-
-            &:hover {
-                background-color: $hover-color;
-                border-radius: 0.5em;
-            }
-        }
-
         .chat-title {
             flex-shrink: 0;
 
             color: $gray-color;
             padding: 0.4em;
+        }
+
+        .chat-item {
+            width: 100%;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            flex-shrink: 0;
+
+            padding: 0.4em;
+
+            box-sizing: border-box;
+
+            color: $black-color;
+            font-size: 0.9em;
+            font-weight: 100;
+
+            border-radius: 0.5em;
+
+            cursor: pointer;
+
+            >span {
+                flex: 1;
+                min-width: 0;
+
+                overflow: hidden;
+
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            &__actions {
+                display: flex;
+                align-items: center;
+
+                gap: 2px;
+
+                flex-shrink: 0;
+
+                margin-left: 6px;
+
+                opacity: 0;
+                visibility: hidden;
+
+                pointer-events: none;
+
+                transition:
+                    opacity 0.15s ease,
+                    visibility 0.15s ease;
+            }
+
+            &__more,
+            &__archive {
+                width: 28px;
+                height: 28px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 0;
+
+                border: none;
+                border-radius: 5px;
+
+                background-color: transparent;
+
+                cursor: pointer;
+
+                img {
+                    width: 17px;
+                    height: 17px;
+
+                    display: block;
+
+                    filter: invert(40%);
+                }
+
+                &:hover {
+                    background-color: #d5d5d5;
+                }
+            }
+
+            &:hover {
+                background-color: $hover-color;
+
+                .chat-item__actions {
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: auto;
+                }
+            }
         }
 
         &::-webkit-scrollbar {
@@ -155,6 +217,10 @@
         &::-webkit-scrollbar-thumb {
             background: #c5c5c5;
             border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #999;
         }
     }
 
@@ -191,7 +257,7 @@
         }
     }
 
-    // Desktop / tablet collapse
+    // Desktop collapsed
 
     &.collapsed {
         width: $sidebar-collapsed-width;
@@ -239,11 +305,6 @@
 
             div {
                 justify-content: center;
-
-                span,
-                p {
-                    display: none;
-                }
             }
 
             .offer--btn {
@@ -289,6 +350,8 @@
 
         transform: translateX(-100%);
 
+        transition: transform 0.25s ease;
+
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
 
         &.open {
@@ -297,6 +360,10 @@
 
         &.collapsed {
             width: $sidebar-mobile-width;
+        }
+
+        .collapse--btn {
+            display: none;
         }
 
         .chatgpt__sidebar--nav {
@@ -335,6 +402,25 @@
             .chat-item {
                 display: block;
             }
+
+            // Keep More and Archive hidden
+            // until the individual chat is hovered
+
+            .chat-item {
+                .chat-item__actions {
+                    opacity: 0;
+                    visibility: hidden;
+                    pointer-events: none;
+                }
+
+                &:hover {
+                    .chat-item__actions {
+                        opacity: 1;
+                        visibility: visible;
+                        pointer-events: auto;
+                    }
+                }
+            }
         }
 
         .chatgpt__sidebar--footer {
@@ -342,11 +428,6 @@
 
             div {
                 justify-content: flex-start;
-
-                span,
-                p {
-                    display: block;
-                }
             }
 
             .offer--btn {
@@ -369,7 +450,7 @@
 
     inset: 0;
 
-    z-index: 99;
+    z-index: 90;
 
     background-color: rgba(0, 0, 0, 0.35);
 
