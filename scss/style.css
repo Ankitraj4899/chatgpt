@@ -374,6 +374,20 @@ body {
   height: 24px;
   display: block;
 }
+.chatgpt__content--top .toggle-theme {
+  height: 2em;
+  width: 3em;
+  padding: 0.7em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #b9b8b0;
+  border: none;
+  outline: none;
+  border-radius: 1em;
+  cursor: pointer;
+}
 .chatgpt__content--top .offer--btn {
   display: flex;
   flex-direction: row;
@@ -783,4 +797,27 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+body.dark {
+  background-color: #212121;
+  color: #ffffff;
+}
+body.dark .chatgpt {
+  background-color: #212121;
+  color: #ffffff;
+}
+body.dark .chatgpt__sidebar {
+  background-color: #171717;
+  color: #ffffff;
+}
+body.dark .chatgpt__sidebar .icon {
+  filter: invert(1);
+}
+body.dark .chatgpt__content {
+  background-color: #212121;
+  color: #ffffff;
+}
+body.dark .chatgpt__content .icon {
+  filter: invert(1);
 }/*# sourceMappingURL=style.css.map */

@@ -257,7 +257,6 @@
         }
     }
 
-    // Desktop collapsed
 
     &.collapsed {
         width: $sidebar-collapsed-width;
@@ -325,7 +324,6 @@
 }
 
 
-// Tablet
 
 @include tablet {
     .chatgpt__sidebar {
@@ -334,7 +332,6 @@
 }
 
 
-// Mobile
 
 @include mobile {
     .chatgpt__sidebar {
@@ -403,9 +400,6 @@
                 display: block;
             }
 
-            // Keep More and Archive hidden
-            // until the individual chat is hovered
-
             .chat-item {
                 .chat-item__actions {
                     opacity: 0;
@@ -443,7 +437,6 @@
 }
 
 
-// Mobile overlay
 
 .chatgpt__sidebar-overlay {
     position: fixed;

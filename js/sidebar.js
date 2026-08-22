@@ -7,14 +7,12 @@ const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
 const mobileMenuIcon = mobileMenuBtn.querySelector("img");
 
 
-/* Desktop sidebar collapse */
 
 collapseBtn.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
 });
 
 
-/* Mobile sidebar */
 
 mobileMenuBtn.addEventListener("click", () => {
     const isOpen = sidebar.classList.contains("open");
@@ -32,8 +30,6 @@ mobileMenuBtn.addEventListener("click", () => {
     }
 });
 
-
-/* Close sidebar from overlay */
 
 overlay.addEventListener("click", () => {
     sidebar.classList.remove("open");
