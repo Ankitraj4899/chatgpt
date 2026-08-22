@@ -1,0 +1,180 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.chat-message {
+    width: 100%;
+
+    display: flex;
+
+    gap: 14px;
+
+    margin-bottom: 24px;
+
+    box-sizing: border-box;
+
+    &--user {
+        justify-content: flex-end;
+
+        .message-content {
+            max-width: 70%;
+
+            padding: 12px 16px;
+
+            border-radius: 18px;
+
+            background-color: $hover-color;
+
+            color: $gray-color;
+
+            p {
+                margin: 0;
+
+                font-size: 15px;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    &--assistant {
+        justify-content: flex-start;
+
+        .message-content {
+            max-width: 75%;
+
+            color: $gray-color;
+
+            font-size: 15px;
+            line-height: 1.6;
+
+            p {
+                margin: 0 0 14px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+
+    @include flex-center(row);
+
+    flex-shrink: 0;
+
+    img {
+        width: 24px;
+        height: 24px;
+
+        display: block;
+    }
+}
+
+.message-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    margin-top: 10px;
+}
+
+.message-action {
+    width: 32px;
+    height: 32px;
+
+    @include flex-center(row);
+
+    padding: 0;
+
+    border: none;
+    border-radius: 7px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    img {
+        width: 17px;
+        height: 17px;
+
+        display: block;
+
+        opacity: 0.6;
+    }
+
+    &:hover {
+        background-color: $hover-color;
+
+        img {
+            opacity: 1;
+        }
+    }
+}
+
+.thinking {
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.thinking span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background-color: $placeholder-color;
+
+    animation: thinking 1.2s infinite ease-in-out;
+}
+
+.thinking span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.thinking span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes thinking {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+.chat-message pre {
+    margin: 16px 0;
+
+    padding: 16px;
+
+    overflow-x: auto;
+
+    border-radius: 10px;
+
+    background-color: $black-color;
+
+    color: $white-color;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.chat-message code {
+    font-family: monospace;
+}
