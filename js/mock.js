@@ -168,7 +168,7 @@ function createAssistantMessage(response) {
 
             <img
                 src="assets/chat-icon.svg"
-                alt=""
+                alt="" class="icon"
             >
 
         </div>
@@ -187,7 +187,7 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/copy.svg"
-                        alt=""
+                        alt="" class="icon"
                     >
                 </button>
 
@@ -198,7 +198,7 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/like.svg"
-                        alt=""
+                        alt="" class="icon"
                     >
                 </button>
 
@@ -209,7 +209,7 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/dislike.svg"
-                        alt=""
+                        alt="" class="icon"
                     >
                 </button>
 
@@ -220,7 +220,7 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/regenerate.svg"
-                        alt=""
+                        alt="" class="icon"
                     >
                 </button>
 
@@ -246,7 +246,7 @@ function createLoadingMessage() {
 
             <img
                 src="assets/chat-icon.svg"
-                alt=""
+                alt="" class="icon"
             >
 
         </div>

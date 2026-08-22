@@ -84,6 +84,13 @@ body.dark {
             &--bottom {
                 background-color: #212121;
             }
+
+            .chat-message--assistant .message-content {
+                max-width: 75%;
+                color: #fff;
+                font-size: 15px;
+                line-height: 1.6;
+            }
         }
     }
 }

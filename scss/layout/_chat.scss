@@ -9,18 +9,17 @@
         min-width: 0;
         height: 100vh;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-start-column;
+
         background-color: $white-color;
 
         overflow: hidden;
 
         &--top {
             width: 100%;
+            height: 60px;
 
-            display: flex;
-            align-items: center;
+            @include flex-start-row;
             justify-content: flex-end;
 
             gap: 8px;
@@ -29,16 +28,18 @@
 
             box-sizing: border-box;
 
+            position: relative;
+            z-index: 10;
+
             flex-shrink: 0;
 
             .mobile-menu-btn {
-                display: none;
+                display: none !important;
 
                 width: 32px;
                 height: 32px;
 
-                align-items: center;
-                justify-content: center;
+                @include flex-center;
 
                 padding: 0;
 
@@ -50,18 +51,17 @@
                 img {
                     width: 24px;
                     height: 24px;
-
                     display: block;
                 }
             }
 
             .toggle-theme {
-                height: 2em;
                 width: 3em;
+                height: 2em;
+
+                @include flex-center;
 
                 padding: 0.7em;
-
-                @include flex-center(row);
 
                 background-color: #b9b8b0;
 
@@ -73,7 +73,7 @@
             }
 
             .offer--btn {
-                @include flex-center(row);
+                @include flex-center;
 
                 padding: 0.8em;
 
@@ -94,11 +94,8 @@
                 img {
                     width: 18px;
                     height: 18px;
-
                     display: block;
-
-                    filter:
-                        invert(48%) sepia(82%) saturate(2171%) hue-rotate(200deg) brightness(101%) contrast(93%);
+                    filter: invert(48%) sepia(82%) saturate(2171%) hue-rotate(200deg) brightness(101%) contrast(93%);
                 }
 
                 &:hover {
@@ -110,7 +107,7 @@
                 width: 32px;
                 height: 32px;
 
-                @include flex-center(row);
+                @include flex-center;
 
                 padding: 0;
 
@@ -122,20 +119,20 @@
                 img {
                     width: 25px;
                     height: 25px;
-
                     display: block;
                 }
             }
         }
 
         &--middle {
-            width: 100%;
+            position: relative;
 
             flex: 1;
             min-height: 0;
 
-            display: flex;
-            flex-direction: column;
+            width: 100%;
+
+            @include flex-start-column;
 
             overflow-y: auto;
             overflow-x: hidden;
@@ -147,7 +144,9 @@
             scrollbar-width: thin;
 
             h1 {
-                margin: auto 0 24px;
+                width: min(760px, 100%);
+
+                margin: auto auto 30px;
 
                 color: $heading-color;
 
@@ -157,8 +156,6 @@
                 line-height: 1.2;
 
                 text-align: center;
-
-                align-self: center;
 
                 flex-shrink: 0;
             }
@@ -174,7 +171,7 @@
             .chatgpt__suggestions {
                 width: min(760px, 100%);
 
-                margin: 0 auto 8px;
+                margin: 0 auto 30px;
 
                 flex-shrink: 0;
             }
@@ -183,16 +180,17 @@
         &--bottom {
             width: 100%;
 
-            display: flex;
-            justify-content: center;
+            @include flex-center;
 
             padding: 10px $chat-padding-desktop 20px;
 
             box-sizing: border-box;
 
+            background-color: $white-color;
+
             flex-shrink: 0;
 
-            background-color: $white-color;
+            z-index: 5;
 
             .chatgpt__search {
                 width: min(760px, 100%);
@@ -202,10 +200,9 @@
 
     &__search {
         width: min(760px, 100%);
-        height: 50px;
+        min-height: 50px;
 
-        display: flex;
-        align-items: center;
+        @include flex-start-row;
 
         padding: 0 12px 0 20px;
 
@@ -222,15 +219,200 @@
     }
 
     &__suggestions {
-        display: flex;
-        flex-direction: column;
+        @include flex-start-column;
+
         align-items: flex-start;
 
-        gap: 10px;
+        gap: 14px;
 
         padding: 0;
 
         box-sizing: border-box;
+    }
+
+    &.has-messages {
+        .chatgpt__content--middle {
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            h1,
+            .chatgpt__suggestions {
+                display: none;
+            }
+
+            .chatgpt__messages {
+                width: min(760px, 100%);
+                margin: 0 auto;
+            }
+        }
+
+        .chatgpt__content--bottom {
+            padding: 10px $chat-padding-desktop 20px;
+        }
+    }
+}
+
+
+.chat-message {
+    width: 100%;
+
+    display: flex;
+
+    margin-bottom: 28px;
+
+    box-sizing: border-box;
+
+    &--user {
+        justify-content: flex-end;
+
+        .message-content {
+            max-width: 70%;
+
+            padding: 10px 16px;
+
+            border-radius: 22px;
+
+            background-color: #f4f4f4;
+
+            color: #171717;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    &--assistant {
+        align-items: flex-start;
+
+        gap: 12px;
+
+        .message-avatar {
+            width: 28px;
+            height: 28px;
+
+            @include flex-center;
+
+            flex-shrink: 0;
+
+            img {
+                width: 24px;
+                height: 24px;
+
+                display: block;
+            }
+        }
+
+        .message-content {
+            min-width: 0;
+            max-width: calc(100% - 40px);
+
+            color: #171717;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            p {
+                margin: 0 0 14px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+
+.message-actions {
+    @include flex-start-row;
+
+    gap: 4px;
+
+    margin-top: 14px;
+}
+
+
+.message-action {
+    width: 32px;
+    height: 32px;
+
+    @include flex-center;
+
+    padding: 6px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    opacity: 0.65;
+
+    transition:
+        background-color 0.2s ease,
+        opacity 0.2s ease;
+
+    img {
+        width: 18px;
+        height: 18px;
+
+        display: block;
+    }
+
+    &:hover {
+        background-color: #f1f1f1;
+        opacity: 1;
+    }
+}
+
+
+.thinking {
+    @include flex-start-row;
+
+    gap: 5px;
+
+    padding: 8px 0;
+
+    span {
+        width: 6px;
+        height: 6px;
+
+        border-radius: 50%;
+
+        background-color: #888;
+
+        animation: thinking 1.2s infinite ease-in-out;
+
+        &:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+    }
+}
+
+
+@keyframes thinking {
+
+    0%,
+    60%,
+    100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
     }
 }
 
@@ -240,7 +422,7 @@
         width: 40px;
         height: 40px;
 
-        @include flex-center(row);
+        @include flex-center;
 
         flex-shrink: 0;
 
@@ -272,7 +454,7 @@
 
         color: #171717;
 
-        font-size: 1.2rem;
+        font-size: 1.1rem;
 
         &::placeholder {
             color: $placeholder-color;
@@ -280,8 +462,7 @@
     }
 
     &__actions {
-        display: flex;
-        align-items: center;
+        @include flex-start-row;
 
         gap: 0.7em;
 
@@ -289,11 +470,7 @@
     }
 
     &__think {
-        filter:
-            invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
-
-        display: flex;
-        align-items: center;
+        @include flex-start-row;
 
         gap: 8px;
 
@@ -320,7 +497,7 @@
         width: 40px;
         height: 40px;
 
-        @include flex-center(row);
+        @include flex-center;
 
         padding: 0;
 
@@ -341,7 +518,7 @@
         width: 30px;
         height: 30px;
 
-        @include flex-center(row);
+        @include flex-center;
 
         flex-shrink: 0;
 
@@ -365,13 +542,9 @@
 
 
 .suggestion {
-    filter:
-        invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
-
     width: fit-content;
 
-    display: flex;
-    align-items: center;
+    @include flex-start-row;
 
     gap: 12px;
 
@@ -382,7 +555,7 @@
 
     color: #8493a3;
 
-    font-size: 17px;
+    font-size: 16px;
 
     cursor: pointer;
 
@@ -394,7 +567,7 @@
     }
 
     span {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     &:hover {
@@ -414,9 +587,11 @@
                 padding: 0 $chat-padding-tablet;
 
                 h1 {
-                    display: block;
+                    width: min(700px, 100%);
 
-                    margin: auto 0 20px;
+                    margin: auto auto 24px;
+
+                    display: block;
 
                     font-size: 1.5rem;
                 }
@@ -428,31 +603,40 @@
                 .chatgpt__suggestions {
                     width: min(700px, 100%);
 
-                    margin: 0 auto 8px;
-
-                    order: 3;
+                    margin: 0 auto 24px;
                 }
             }
 
             &--bottom {
-                padding: 8px $chat-padding-tablet 16px;
+                padding: 10px $chat-padding-tablet 20px;
 
                 .chatgpt__search {
                     width: min(700px, 100%);
                 }
             }
         }
+
+        &.has-messages {
+            .chatgpt__content--middle {
+                padding: 20px $chat-padding-tablet;
+
+                h1,
+                .chatgpt__suggestions {
+                    display: none;
+                }
+            }
+
+            .chatgpt__content--bottom {
+                padding: 8px $chat-padding-tablet 16px;
+            }
+        }
     }
 
     .chatgpt__suggestions {
-        align-items: flex-start;
-
-        gap: 8px;
+        gap: 10px;
     }
 
     .suggestion {
-        justify-content: flex-start;
-
         gap: 12px;
     }
 }
@@ -465,6 +649,8 @@
             height: 100vh;
 
             &--top {
+                height: 60px;
+
                 padding: 1rem;
 
                 justify-content: flex-end;
@@ -472,27 +658,7 @@
                 gap: 8px;
 
                 .mobile-menu-btn {
-                    display: flex;
-
-                    width: 32px;
-                    height: 32px;
-
-                    align-items: center;
-                    justify-content: center;
-
-                    padding: 0;
-
-                    border: none;
-                    background: transparent;
-
-                    cursor: pointer;
-
-                    img {
-                        width: 24px;
-                        height: 24px;
-
-                        display: block;
-                    }
+                    display: flex !important;
                 }
 
                 .offer--btn {
@@ -509,29 +675,47 @@
                 padding: 0 $chat-padding-mobile;
 
                 h1 {
+                    width: 100%;
+
                     display: block;
 
-                    margin: auto 0 18px;
+                    margin: auto auto 20px;
 
-                    font-size: 1.4rem;
+                    font-size: 1.35rem;
                 }
 
-                .chatgpt__messages,
-                .chatgpt__suggestions {
+                .chatgpt__messages {
                     width: 100%;
                 }
 
                 .chatgpt__suggestions {
-                    margin-bottom: 8px;
+                    width: 100%;
+
+                    margin: 0 auto 20px;
                 }
             }
 
             &--bottom {
-                padding: 6px $chat-padding-mobile 12px;
+                padding: 8px $chat-padding-mobile 14px;
 
                 .chatgpt__search {
                     width: 100%;
                 }
+            }
+        }
+
+        &.has-messages {
+            .chatgpt__content--middle {
+                padding: 16px $chat-padding-mobile;
+
+                h1,
+                .chatgpt__suggestions {
+                    display: none;
+                }
+            }
+
+            .chatgpt__content--bottom {
+                padding: 6px $chat-padding-mobile 12px;
             }
         }
     }
@@ -563,6 +747,14 @@
 
     .search__input {
         font-size: 16px;
+    }
+
+    .chat-message {
+        &--user {
+            .message-content {
+                max-width: 90%;
+            }
+        }
     }
 }
 
@@ -598,8 +790,12 @@
                 padding-inline: $chat-padding-mobile;
 
                 h1 {
+                    font-size: 1.25rem;
+                    margin-bottom: 18px;
+                }
+
+                .chatgpt__suggestions {
                     margin-bottom: 16px;
-                    font-size: 1.3rem;
                 }
             }
 
@@ -610,7 +806,7 @@
     }
 
     .chatgpt__search {
-        width: 100%;
+        min-height: 48px;
     }
 
     .search__add {
