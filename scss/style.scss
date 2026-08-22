@@ -44,6 +44,9 @@ body {
     }
 }
 
+
+
+
 body.dark {
     background-color: #212121;
     color: #ffffff;
@@ -67,6 +70,19 @@ body.dark {
 
             .icon {
                 filter: invert(1);
+            }
+
+            &--top {
+                background-color: #212121;
+            }
+
+            &--middle {
+                background-color: #212121;
+                color: #ffffff;
+            }
+
+            &--bottom {
+                background-color: #212121;
             }
         }
     }
