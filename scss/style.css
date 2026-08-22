@@ -28,6 +28,9 @@ body {
   align-items: center;
   padding: 1em 1em 0.1em 1em;
 }
+.chatgpt__sidebar--nav button {
+  cursor: pointer;
+}
 .chatgpt__sidebar .chat-logo {
   color: #000;
   font-weight: 600;
