@@ -68,10 +68,7 @@
     }
 
     &--top {
-        display: flex;
-        justify-content: flex-start;
-        // align-items: center;
-        flex-direction: column;
+        @include flex-start-column;
         padding: 1em;
         gap: 0.7em;
         font-size: 0.95em;
@@ -79,15 +76,13 @@
         color: #2b2727;
 
         .chat {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            @include flex-start-row;
             gap: 0.7em;
             padding: 0.4em;
         }
 
         .chat:hover {
-            background-color: #e3e3e3;
+            background-color: $hover-color;
             // padding: 0.3em;
             border-radius: 0.5em;
             cursor: pointer;
@@ -95,10 +90,7 @@
     }
 
     &--bottom {
-        display: flex;
-        justify-content: flex-start;
-        // align-items: center;
-        flex-direction: column;
+        @include flex-start-column;
         padding: 1em;
         gap: 0.7em;
         height: auto;
@@ -112,7 +104,7 @@
         }
 
         .chat-item:hover {
-            background-color: #e3e3e3;
+            background-color: $hover-color;
             border-radius: 0.5em;
         }
 
@@ -136,12 +128,10 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        background-color: #fff;
+        background-color: $white-color;
 
         div {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+            @include flex-start;
         }
 
         .offer--btn {
@@ -153,7 +143,7 @@
             padding: 0.3em;
             border-radius: 1em;
             background-color: transparent;
-            border: 1px solid gray;
+            border: 1px solid $gray-color;
         }
     }
 }

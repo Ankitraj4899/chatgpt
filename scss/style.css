@@ -130,7 +130,7 @@ body {
   padding: 0.3em;
   border-radius: 1em;
   background-color: transparent;
-  border: 1px solid gray;
+  border: 1px solid #777;
 }
 
 .chatgpt__content {
@@ -154,8 +154,9 @@ body {
 }
 .chatgpt__content--top .offer--btn {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   border-radius: 1em;
   padding: 0.8em;
   gap: 8px;
@@ -180,8 +181,9 @@ body {
   width: 32px;
   height: 32px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   padding: 0;
   border: none;
   background: transparent;
@@ -218,7 +220,7 @@ body {
   align-items: center;
   padding: 0 12px 0 20px;
   box-sizing: border-box;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e3e3e3;
   border-radius: 40px;
   background-color: #fff;
   box-shadow: 1px 4px 25px rgba(0, 0, 0, 0.08);
@@ -237,8 +239,9 @@ body {
   width: 40px;
   height: 40px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   flex-shrink: 0;
   padding: 0;
   border: none;
@@ -293,8 +296,9 @@ body {
   width: 40px;
   height: 40px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   padding: 0;
   border: none;
   background: transparent;
@@ -309,13 +313,14 @@ body {
   width: 30px;
   height: 30px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   flex-shrink: 0;
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: #3478dc;
+  background-color: #3184f4;
   cursor: pointer;
 }
 .search__voice img {
@@ -347,7 +352,7 @@ body {
   font-size: 17px;
 }
 .suggestion:hover {
-  color: #333;
+  color: #e3e3e3;
 }
 
 @media (max-width: 800px) {

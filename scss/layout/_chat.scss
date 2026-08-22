@@ -28,9 +28,7 @@
             box-sizing: border-box;
 
             .offer--btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                @include flex-center(row);
                 border-radius: 1em;
                 padding: 0.8em;
                 gap: 8px;
@@ -40,7 +38,7 @@
                 border: none;
                 background: transparent;
 
-                color: #3184f4;
+                color: $blue-color;
 
                 font-size: 14px;
                 font-weight: 500;
@@ -49,7 +47,7 @@
                 cursor: pointer;
 
                 img {
-                    color: #3184f4;
+                    color: $blue-color;
                     width: 18px;
                     height: 18px;
                     display: block;
@@ -65,10 +63,7 @@
                 width: 32px;
                 height: 32px;
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
+                @include flex-center(row);
                 padding: 0;
 
                 border: none;
@@ -102,7 +97,7 @@
             h1 {
                 margin: 0 0 52px;
 
-                color: #171717;
+                color: $heading-color;
 
                 font-size: 1.6rem;
                 font-weight: 400;
@@ -125,7 +120,7 @@
 
         box-sizing: border-box;
 
-        border: 1px solid #e5e5e5;
+        border: 1px solid $hover-color;
         border-radius: 40px;
 
         background-color: $white-color;
@@ -153,10 +148,7 @@
         width: 40px;
         height: 40px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+        @include flex-center(row);
         flex-shrink: 0;
 
         padding: 0;
@@ -189,7 +181,7 @@
         font-size: 1.2rem;
 
         &::placeholder {
-            color: #929292;
+            color: $placeholder-color;
         }
     }
 
@@ -232,9 +224,7 @@
         width: 40px;
         height: 40px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-center(row);
 
         padding: 0;
 
@@ -255,9 +245,7 @@
         width: 30px;
         height: 30px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-center(row);
 
         flex-shrink: 0;
 
@@ -266,7 +254,7 @@
         border: none;
         border-radius: 50%;
 
-        background-color: #3478dc;
+        background-color: $blue-color;
 
         cursor: pointer;
 
@@ -310,7 +298,7 @@
     }
 
     &:hover {
-        color: #333;
+        color: $hover-color;
     }
 }
 
