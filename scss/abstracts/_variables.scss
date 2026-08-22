@@ -1,7 +1,18 @@
-$gray-color:#777;
-$white-color:#fff;
-$black-color:#000;
-$blue-color:#3184f4;
-$hover-color:#e3e3e3;
-$placeholder-color:#929292;
-$heading-color:#171717;
+$gray-color: #777;
+$white-color: #fff;
+$black-color: #000;
+$blue-color: #3184f4;
+$hover-color: #e3e3e3;
+$placeholder-color: #929292;
+$heading-color: #171717;
+
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+$sidebar-width: 260px;
+$sidebar-collapsed-width: 72px;
+$sidebar-mobile-width: 300px;
+$chat-padding-desktop: 80px;
+$chat-padding-tablet: 40px;
+$chat-padding-mobile: 20px;

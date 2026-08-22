@@ -2,12 +2,24 @@
 @use "../abstracts/mixins" as *;
 
 .chatgpt__sidebar {
-    // overflow-y: scroll;
-    // height: 100vh;
+    width: $sidebar-width;
+    height: 100vh;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background-color: $white-color;
+
+    transition:
+        width 0.25s ease,
+        transform 0.25s ease;
 
     &::-webkit-scrollbar {
         width: 8px;
-        // height: 1px;
     }
 
     &::-webkit-scrollbar-track {
@@ -17,7 +29,6 @@
     &::-webkit-scrollbar-thumb {
         background: #c5c5c5;
         border-radius: 10px;
-        height: 1rem;
     }
 
     &::-webkit-scrollbar-thumb:hover {
@@ -25,11 +36,15 @@
     }
 
     &--nav {
+        flex-shrink: 0;
+
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 1em 1em 0.1em 1em;
-        button{
+        justify-content: space-between;
+
+        padding: 1em 1em 0.1em;
+
+        button {
             cursor: pointer;
         }
     }
@@ -46,13 +61,9 @@
         border: none;
     }
 
-    .search-icon {
-        filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
-    }
-
+    .search-icon,
     .sidebar-icon {
         filter: invert(48%) sepia(82%) saturate(0%) hue-rotate(200deg) brightness(101%) contrast(93%);
-
     }
 
     .chat {
@@ -63,71 +74,103 @@
 
     .chatgpt__middle {
         flex: 1;
-        overflow-y: scroll;
-        height: 100vh;
+        min-height: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
     }
 
     &--top {
+        flex-shrink: 0;
+
         @include flex-start-column;
+
         padding: 1em;
         gap: 0.7em;
+
         font-size: 0.95em;
         font-weight: 100;
+
         color: #2b2727;
 
         .chat {
             @include flex-start-row;
+
             gap: 0.7em;
             padding: 0.4em;
-        }
 
-        .chat:hover {
-            background-color: $hover-color;
-            // padding: 0.3em;
-            border-radius: 0.5em;
-            cursor: pointer;
+            &:hover {
+                background-color: $hover-color;
+                border-radius: 0.5em;
+                cursor: pointer;
+            }
         }
     }
 
     &--bottom {
+        flex: 1;
+        min-height: 0;
+
         @include flex-start-column;
+
         padding: 1em;
         gap: 0.7em;
-        height: auto;
+
+        overflow-y: auto;
+        overflow-x: hidden;
 
         .chat-item {
+            flex-shrink: 0;
+
             color: $black-color;
             font-size: 0.9em;
             padding: 0.4em;
             font-weight: 100;
+
             cursor: pointer;
-        }
 
-        .chat-item:hover {
-            background-color: $hover-color;
-            border-radius: 0.5em;
+            &:hover {
+                background-color: $hover-color;
+                border-radius: 0.5em;
+            }
         }
-
 
         .chat-title {
+            flex-shrink: 0;
+
             color: $gray-color;
             padding: 0.4em;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #c5c5c5;
+            border-radius: 10px;
         }
     }
 
     &--footer {
-        position: fixed;
+        flex-shrink: 0;
+
+        width: 100%;
+        height: 5rem;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
-        // align-items: center;
-        width: 20vw;
-        height: 5rem;
+
         padding: 1em;
         padding-top: 0;
-        position: fixed;
-        bottom: 0;
-        left: 0;
+
         background-color: $white-color;
 
         div {
@@ -135,15 +178,212 @@
         }
 
         .offer--btn {
-            // display: flex;
-            // align-items: center;
-            // justify-content: center;
             @include flex-center(row);
+
             gap: 8px;
+
             padding: 0.3em;
+
             border-radius: 1em;
+
             background-color: transparent;
             border: 1px solid $gray-color;
         }
+    }
+
+    // Desktop / tablet collapse
+
+    &.collapsed {
+        width: $sidebar-collapsed-width;
+
+        .chatgpt__sidebar--nav {
+            justify-content: center;
+
+            >div:first-child {
+                display: none;
+            }
+
+            >div:last-child {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        .chatgpt__sidebar--top {
+            align-items: center;
+
+            .chat {
+                width: 40px;
+
+                justify-content: center;
+
+                p {
+                    display: none;
+                }
+            }
+        }
+
+        .chatgpt__sidebar--bottom {
+            padding-inline: 8px;
+
+            .chat-title,
+            .chat-item {
+                display: none;
+            }
+        }
+
+        .chatgpt__sidebar--footer {
+            align-items: center;
+
+            div {
+                justify-content: center;
+
+                span,
+                p {
+                    display: none;
+                }
+            }
+
+            .offer--btn {
+                width: 40px;
+                height: 40px;
+
+                padding: 0;
+
+                font-size: 0;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+// Tablet
+
+@include tablet {
+    .chatgpt__sidebar {
+        width: $sidebar-width;
+    }
+}
+
+
+// Mobile
+
+@include mobile {
+    .chatgpt__sidebar {
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: $sidebar-mobile-width;
+        height: 100vh;
+
+        z-index: 100;
+
+        transform: translateX(-100%);
+
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+
+        &.open {
+            transform: translateX(0);
+        }
+
+        &.collapsed {
+            width: $sidebar-mobile-width;
+        }
+
+        .chatgpt__sidebar--nav {
+            justify-content: space-between;
+
+            >div:first-child {
+                display: block;
+            }
+
+            >div:last-child {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        .chatgpt__sidebar--top {
+            align-items: stretch;
+
+            .chat {
+                width: auto;
+
+                justify-content: flex-start;
+
+                p {
+                    display: block;
+                }
+            }
+        }
+
+        .chatgpt__sidebar--bottom {
+            padding: 1em;
+
+            .chat-title,
+            .chat-item {
+                display: block;
+            }
+        }
+
+        .chatgpt__sidebar--footer {
+            align-items: stretch;
+
+            div {
+                justify-content: flex-start;
+
+                span,
+                p {
+                    display: block;
+                }
+            }
+
+            .offer--btn {
+                width: auto;
+                height: auto;
+
+                padding: 0.3em;
+
+                font-size: inherit;
+            }
+        }
+    }
+}
+
+
+// Mobile overlay
+
+.chatgpt__sidebar-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99;
+
+    background-color: rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 }

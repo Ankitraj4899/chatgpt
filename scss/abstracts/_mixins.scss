@@ -29,3 +29,22 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin small-mobile {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
