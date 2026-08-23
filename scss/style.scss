@@ -64,6 +64,27 @@ body.dark {
             }
         }
 
+        .chatgpt__content--middle {
+            scrollbar-color: #555555 transparent;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #555555;
+                border-radius: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: #666666;
+            }
+        }
+
         &__content {
             background-color: #212121;
             color: #ffffff;
