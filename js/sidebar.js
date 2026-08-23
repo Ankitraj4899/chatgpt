@@ -191,22 +191,81 @@ function renderChatHistory() {
 }
 
 
+// function openConversation(id) {
+//     const conversations = getConversations();
+
+//     const conversation = conversations.find(
+//         (item) => item.id === id
+//     );
+
+//     if (!conversation) {
+//         return;
+//     }
+//     activeConversationId = id;
+
+//     const messagesContainer =
+//         document.querySelector(
+//             ".chatgpt__messages"
+//         );
+
+//     const heading =
+//         document.querySelector(
+//             ".chatgpt__content--middle h1"
+//         );
+
+//     const suggestions =
+//         document.querySelector(
+//             ".chatgpt__suggestions"
+//         );
+
+//     if (!messagesContainer) {
+//         return;
+//     }
+
+//     messagesContainer.innerHTML = "";
+
+//     conversation.messages.forEach((message) => {
+//         const messageElement =
+//             document.createElement("div");
+
+//         messageElement.className =
+//             `message message--${message.role}`;
+
+//         messageElement.textContent =
+//             message.content;
+
+//         messagesContainer.appendChild(
+//             messageElement
+//         );
+//     });
+
+//     if (heading) {
+//         heading.style.display = "none";
+//     }
+
+//     if (suggestions) {
+//         suggestions.style.display = "none";
+//     }
+
+//     messagesContainer.scrollTop =
+//         messagesContainer.scrollHeight;
+// }
+
 function openConversation(id) {
     const conversations = getConversations();
 
     const conversation = conversations.find(
-        (item) => item.id === id
+        item => item.id === id
     );
 
     if (!conversation) {
         return;
     }
+
     activeConversationId = id;
 
     const messagesContainer =
-        document.querySelector(
-            ".chatgpt__messages"
-        );
+        document.querySelector(".chatgpt__messages");
 
     const heading =
         document.querySelector(
@@ -218,25 +277,97 @@ function openConversation(id) {
             ".chatgpt__suggestions"
         );
 
-    if (!messagesContainer) {
-        return;
-    }
-
     messagesContainer.innerHTML = "";
 
-    conversation.messages.forEach((message) => {
+    conversation.messages.forEach(message => {
+
         const messageElement =
             document.createElement("div");
 
-        messageElement.className =
-            `message message--${message.role}`;
+        if (message.role === "user") {
 
-        messageElement.textContent =
-            message.content;
+            messageElement.className =
+                "chat-message chat-message--user";
 
-        messagesContainer.appendChild(
-            messageElement
-        );
+            messageElement.innerHTML = `
+                <div class="message-content">
+                    <p>${escapeHTML(message.content)}</p>
+                </div>
+            `;
+
+        } else if (message.role === "assistant") {
+
+            messageElement.className =
+                "chat-message chat-message--assistant";
+
+            messageElement.innerHTML = `
+                <div class="message-avatar">
+
+                    <img
+                        src="assets/chat-icon.svg"
+                        alt=""
+                        class="icon"
+                    >
+
+                </div>
+
+                <div class="message-content">
+
+                    ${message.content}
+
+                    <div class="message-actions">
+
+                        <button
+                            type="button"
+                            class="message-action copy-message"
+                        >
+                            <img
+                                src="assets/copy.svg"
+                                alt=""
+                                class="icon"
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-action like-message"
+                        >
+                            <img
+                                src="assets/like.svg"
+                                alt=""
+                                class="icon"
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-action dislike-message"
+                        >
+                            <img
+                                src="assets/dislike.svg"
+                                alt=""
+                                class="icon"
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="message-action regenerate-message"
+                        >
+                            <img
+                                src="assets/regenerate.svg"
+                                alt=""
+                                class="icon"
+                            >
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+        }
+
+        messagesContainer.appendChild(messageElement);
     });
 
     if (heading) {
@@ -251,5 +382,12 @@ function openConversation(id) {
         messagesContainer.scrollHeight;
 }
 
+function escapeHTML(text) {
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
 
 renderChatHistory();
