@@ -1,6 +1,7 @@
 const messageInput = document.querySelector(".search__input");
 const sendButton = document.querySelector(".search__voice");
 const chatArea = document.querySelector(".chatgpt__content--middle");
+const messagesContainer = document.querySelector(".chatgpt__messages");
 const suggestions = document.querySelector(".chatgpt__suggestions");
 
 
@@ -22,7 +23,6 @@ const mockResponses = [
         `
     },
 
-
     {
         keywords: ["html"],
 
@@ -39,7 +39,6 @@ const mockResponses = [
         `
     },
 
-
     {
         keywords: ["css", "scss"],
 
@@ -54,7 +53,6 @@ const mockResponses = [
             </p>
         `
     },
-
 
     {
         keywords: ["flexbox", "flex"],
@@ -72,7 +70,6 @@ const mockResponses = [
         `
     },
 
-
     {
         keywords: ["grid"],
 
@@ -89,13 +86,12 @@ const mockResponses = [
         `
     },
 
-
     {
         keywords: ["hello", "hi", "hey"],
 
         response: `
             <p>
-                Hello! How can I help you today?
+                Hello! glad to see you, How can I help you today?
             </p>
         `
     }
@@ -105,17 +101,15 @@ const mockResponses = [
 
 const defaultResponse = `
     <p>
-        That's an interesting question.
+        What is this behaviour? yaar...
     </p>
 
     <p>
-        I'm a mock AI response for this frontend project,
-        so I don't connect to a real AI API.
+        Ye to aapne mujhe abhi tk sikhaya hi nhi...
     </p>
 
     <p>
-        You can add more predefined responses to the
-        JavaScript response collection.
+        This is not fair, jo aapne mujhe sikhaya h whi puche...
     </p>
 `;
 
@@ -168,16 +162,15 @@ function createAssistantMessage(response) {
 
             <img
                 src="assets/chat-icon.svg"
-                alt="" class="icon"
+                alt=""
+                class="icon"
             >
 
         </div>
 
-
         <div class="message-content">
 
             ${response}
-
 
             <div class="message-actions">
 
@@ -187,10 +180,10 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/copy.svg"
-                        alt="" class="icon"
+                        alt=""
+                        class="icon"
                     >
                 </button>
-
 
                 <button
                     type="button"
@@ -198,10 +191,10 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/like.svg"
-                        alt="" class="icon"
+                        alt=""
+                        class="icon"
                     >
                 </button>
-
 
                 <button
                     type="button"
@@ -209,10 +202,10 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/dislike.svg"
-                        alt="" class="icon"
+                        alt=""
+                        class="icon"
                     >
                 </button>
-
 
                 <button
                     type="button"
@@ -220,7 +213,8 @@ function createAssistantMessage(response) {
                 >
                     <img
                         src="assets/regenerate.svg"
-                        alt="" class="icon"
+                        alt=""
+                        class="icon"
                     >
                 </button>
 
@@ -246,11 +240,11 @@ function createLoadingMessage() {
 
             <img
                 src="assets/chat-icon.svg"
-                alt="" class="icon"
+                alt=""
+                class="icon"
             >
 
         </div>
-
 
         <div class="message-content">
 
@@ -288,6 +282,70 @@ function escapeHTML(text) {
 }
 
 
+function saveUserMessage(message) {
+
+    if (!activeConversationId) {
+        return;
+    }
+
+    const conversations = getConversations();
+
+    const conversation = conversations.find(
+        item => item.id === activeConversationId
+    );
+
+    if (!conversation) {
+        return;
+    }
+
+    conversation.messages.push({
+        id: Date.now(),
+        role: "user",
+        content: message,
+        timestamp: new Date().toISOString()
+    });
+
+    conversation.updatedAt =
+        new Date().toISOString();
+
+    saveConversations(conversations);
+}
+
+
+function saveAssistantMessage(response) {
+
+    if (!activeConversationId) {
+        return;
+    }
+
+    const conversations = getConversations();
+
+    const conversation = conversations.find(
+        item => item.id === activeConversationId
+    );
+
+    if (!conversation) {
+        return;
+    }
+
+    conversation.messages.push({
+        id: Date.now(),
+        role: "assistant",
+        content: response,
+        timestamp: new Date().toISOString(),
+        actions: {
+            liked: false,
+            disliked: false
+        }
+    });
+
+    conversation.updatedAt =
+        new Date().toISOString();
+
+    saveConversations(conversations);
+}
+
+
 async function sendMessage() {
 
     const message = messageInput.value.trim();
@@ -296,14 +354,53 @@ async function sendMessage() {
         return;
     }
 
-
     suggestions.style.display = "none";
+
+
+    if (!activeConversationId) {
+
+        const conversations = getConversations();
+
+        const now =
+            new Date().toISOString();
+
+        const newConversation = {
+
+            id: Date.now(),
+
+            title:
+                message.length > 40
+                    ? `${message.substring(0, 40)}...`
+                    : message,
+
+            createdAt: now,
+
+            updatedAt: now,
+
+            messages: []
+
+        };
+
+        conversations.push(newConversation);
+
+        saveConversations(conversations);
+
+        activeConversationId =
+            newConversation.id;
+
+        renderChatHistory();
+    }
 
 
     const userMessage =
         createUserMessage(message);
 
-    chatArea.appendChild(userMessage);
+    messagesContainer.appendChild(
+        userMessage
+    );
+
+
+    saveUserMessage(message);
 
 
     messageInput.value = "";
@@ -320,7 +417,9 @@ async function sendMessage() {
     const loadingMessage =
         createLoadingMessage();
 
-    chatArea.appendChild(loadingMessage);
+    messagesContainer.appendChild(
+        loadingMessage
+    );
 
     scrollToBottom();
 
@@ -342,12 +441,20 @@ async function sendMessage() {
     const assistantMessage =
         createAssistantMessage(response);
 
-    chatArea.appendChild(assistantMessage);
+    messagesContainer.appendChild(
+        assistantMessage
+    );
+
+
+    saveAssistantMessage(response);
 
 
     sendButton.disabled = false;
 
     scrollToBottom();
+
+
+    renderChatHistory();
 }
 
 
@@ -369,6 +476,7 @@ messageInput.addEventListener(
             event.preventDefault();
 
             sendMessage();
+
         }
 
     }

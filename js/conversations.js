@@ -1,4 +1,4 @@
-const conversations = [
+const defaultConversations = [
     {
         id: 1,
         title: "Learn JavaScript",
@@ -23,7 +23,6 @@ const conversations = [
             }
         ]
     },
-
     {
         id: 2,
         title: "CSS Grid Explanation",
@@ -48,7 +47,6 @@ const conversations = [
             }
         ]
     },
-
     {
         id: 3,
         title: "Palindrome Function",
@@ -73,4 +71,28 @@ const conversations = [
             }
         ]
     }
-];x``
+];
+
+const STORAGE_KEY = "chatgpt_conversations";
+
+function getConversations() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+
+    if (!stored) {
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(defaultConversations)
+        );
+
+        return [...defaultConversations];
+    }
+
+    return JSON.parse(stored);
+}
+
+function saveConversations(conversations) {
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(conversations)
+    );
+}
