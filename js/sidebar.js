@@ -1,44 +1,20 @@
-let activeConversationId = null;
-
-const sidebar =
-    document.querySelector(".chatgpt__sidebar");
-
-const overlay =
-    document.querySelector(".chatgpt__sidebar-overlay");
-
-const collapseBtn =
-    document.querySelector(".collapse--btn");
-
-const mobileMenuBtn =
-    document.querySelector(".mobile-menu-btn");
-
-const mobileMenuIcon =
-    mobileMenuBtn.querySelector("img");
-
-const chatHistory =
-    document.querySelector(".chat-history");
-
-const searchButton =
-    document.querySelector(".search--icon");
-
-const searchBox =
-    document.querySelector(".chatgpt__sidebar--search");
-
-const searchInput =
-    document.querySelector(".sidebar-search-input");
-
-const searchBack =
-    document.querySelector(".sidebar-search-back");
-
-const searchClear =
-    document.querySelector(".sidebar-search-clear");
+let activeConversationId = null
+const sidebar = document.querySelector(".chatgpt__sidebar");
+const overlay = document.querySelector(".chatgpt__sidebar-overlay");
+const collapseBtn = document.querySelector(".collapse--btn");
+const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+const mobileMenuIcon = mobileMenuBtn.querySelector("img");
+const chatHistory = document.querySelector(".chat-history");
+const searchButton = document.querySelector(".search--icon");
+const searchBox = document.querySelector(".chatgpt__sidebar--search");
+const searchInput = document.querySelector(".sidebar-search-input");
+const searchBack = document.querySelector(".sidebar-search-back");
+const searchClear = document.querySelector(".sidebar-search-clear");
 
 
 collapseBtn.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
 });
-
-
 searchButton.addEventListener("click", () => {
     if (sidebar.classList.contains("collapsed")) {
         sidebar.classList.remove("collapsed");
@@ -48,8 +24,6 @@ searchButton.addEventListener("click", () => {
 
     searchInput.focus();
 });
-
-
 searchBack.addEventListener("click", () => {
     searchBox.classList.remove("active");
 
@@ -58,7 +32,6 @@ searchBack.addEventListener("click", () => {
     renderChatHistory();
 });
 
-
 searchClear.addEventListener("click", () => {
     searchInput.value = "";
 
@@ -66,8 +39,6 @@ searchClear.addEventListener("click", () => {
 
     renderChatHistory();
 });
-
-
 searchInput.addEventListener("input", () => {
     const searchTerm =
         searchInput.value.trim().toLowerCase();
@@ -89,38 +60,28 @@ searchInput.addEventListener("input", () => {
 
     renderChatHistory(filteredConversations);
 });
-
-
 mobileMenuBtn.addEventListener("click", () => {
-    const isOpen =
-        sidebar.classList.contains("open");
+    const isOpen = sidebar.classList.contains("open");
 
     if (isOpen) {
         sidebar.classList.remove("open");
         overlay.classList.remove("active");
 
-        mobileMenuIcon.src =
-            "assets/menu.svg";
+        mobileMenuIcon.src = "assets/menu.svg";
     } else {
         sidebar.classList.add("open");
         overlay.classList.add("active");
 
-        mobileMenuIcon.src =
-            "assets/close.svg";
+        mobileMenuIcon.src = "assets/close.svg";
     }
 });
-
-
 overlay.addEventListener("click", () => {
     sidebar.classList.remove("open");
 
     overlay.classList.remove("active");
 
-    mobileMenuIcon.src =
-        "assets/menu.svg";
+    mobileMenuIcon.src = "assets/menu.svg";
 });
-
-
 function formatDate(date) {
     const today = new Date();
     const targetDate = new Date(date);
@@ -128,9 +89,7 @@ function formatDate(date) {
     today.setHours(0, 0, 0, 0);
     targetDate.setHours(0, 0, 0, 0);
 
-    const difference =
-        (today - targetDate) /
-        (1000 * 60 * 60 * 24);
+    const difference = (today - targetDate) / (1000 * 60 * 60 * 24);
 
     if (difference === 0) {
         return "Today";
@@ -146,16 +105,12 @@ function formatDate(date) {
 
     return "Older";
 }
-
-
 function createChatItem(conversation) {
-    const item =
-        document.createElement("div");
+    const item = document.createElement("div");
 
     item.className = "chat-item";
 
-    item.dataset.id =
-        conversation.id;
+    item.dataset.id = conversation.id;
 
     item.innerHTML = `
         <span>${escapeHTML(conversation.title)}</span>
@@ -201,11 +156,7 @@ function createChatItem(conversation) {
 
     return item;
 }
-
-
-function renderChatHistory(
-    conversations = getConversations()
-) {
+function renderChatHistory(conversations = getConversations()) {
     if (!chatHistory) {
         return;
     }
@@ -249,14 +200,11 @@ function renderChatHistory(
 
             hasResults = true;
 
-            const groupTitle =
-                document.createElement("p");
+            const groupTitle = document.createElement("p");
 
-            groupTitle.className =
-                "chat-title";
+            groupTitle.className = "chat-title";
 
-            groupTitle.textContent =
-                groupName;
+            groupTitle.textContent = groupName;
 
             chatHistory.appendChild(
                 groupTitle
@@ -265,48 +213,32 @@ function renderChatHistory(
             groupConversations.forEach(
                 (conversation) => {
 
-                    const item =
-                        createChatItem(
-                            conversation
-                        );
+                    const item = createChatItem(conversation);
 
-                    chatHistory.appendChild(
-                        item
-                    );
+                    chatHistory.appendChild(item);
                 }
             );
         }
     );
 
-    if (
-        !hasResults &&
-        searchInput &&
-        searchInput.value.trim()
-    ) {
-        const noResults =
-            document.createElement("p");
+    if (!hasResults && searchInput && searchInput.value.trim()) {
+        const noResults = document.createElement("p");
 
-        noResults.className =
-            "chat-title";
+        noResults.className = "chat-title";
 
-        noResults.textContent =
-            "No conversations found";
+        noResults.textContent = "No conversations found";
 
         chatHistory.appendChild(
             noResults
         );
     }
 }
-
-
 function openConversation(id) {
-    const conversations =
-        getConversations();
+    const conversations = getConversations();
 
-    const conversation =
-        conversations.find(
-            item => item.id === id
-        );
+    const conversation = conversations.find(
+        item => item.id === id
+    );
 
     if (!conversation) {
         return;
@@ -314,20 +246,17 @@ function openConversation(id) {
 
     activeConversationId = id;
 
-    const messagesContainer =
-        document.querySelector(
-            ".chatgpt__messages"
-        );
+    const messagesContainer = document.querySelector(
+        ".chatgpt__messages"
+    );
 
-    const heading =
-        document.querySelector(
-            ".chatgpt__content--middle h1"
-        );
+    const heading = document.querySelector(
+        ".chatgpt__content--middle h1"
+    );
 
-    const suggestions =
-        document.querySelector(
-            ".chatgpt__suggestions"
-        );
+    const suggestions = document.querySelector(
+        ".chatgpt__suggestions"
+    );
 
     if (!messagesContainer) {
         return;
@@ -448,19 +377,13 @@ function openConversation(id) {
         suggestions.style.display = "none";
     }
 
-    messagesContainer.scrollTop =
-        messagesContainer.scrollHeight;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
-
-
 function escapeHTML(text) {
-    const div =
-        document.createElement("div");
+    const div = document.createElement("div");
 
     div.textContent = text;
 
     return div.innerHTML;
 }
-
-
 renderChatHistory();
