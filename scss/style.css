@@ -128,7 +128,7 @@ body {
   pointer-events: none;
   transition: opacity 0.15s ease, visibility 0.15s ease;
 }
-.chatgpt__sidebar--bottom .chat-item__more, .chatgpt__sidebar--bottom .chat-item__archive {
+.chatgpt__sidebar--bottom .chat-item__more, .chatgpt__sidebar--bottom .chat-item__pin {
   width: 28px;
   height: 28px;
   display: flex;
@@ -141,13 +141,13 @@ body {
   background-color: transparent;
   cursor: pointer;
 }
-.chatgpt__sidebar--bottom .chat-item__more img, .chatgpt__sidebar--bottom .chat-item__archive img {
+.chatgpt__sidebar--bottom .chat-item__more img, .chatgpt__sidebar--bottom .chat-item__pin img {
   width: 17px;
   height: 17px;
   display: block;
   filter: invert(40%);
 }
-.chatgpt__sidebar--bottom .chat-item__more:hover, .chatgpt__sidebar--bottom .chat-item__archive:hover {
+.chatgpt__sidebar--bottom .chat-item__more:hover, .chatgpt__sidebar--bottom .chat-item__pin:hover {
   background-color: #d5d5d5;
 }
 .chatgpt__sidebar--bottom .chat-item:hover {

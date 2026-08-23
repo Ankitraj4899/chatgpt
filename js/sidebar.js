@@ -116,7 +116,10 @@ function createChatItem(conversation) {
         <span>${conversation.title}</span>
 
         <div class="chat-item__actions">
-            <button class="chat-item__menu">
+        <button class="chat-item__pin icon">
+                <img src="assets/pin.svg" alt="pin">
+            </button>
+            <button class="chat-item__more icon">
                 <img src="assets/more.svg" alt="More">
             </button>
         </div>
