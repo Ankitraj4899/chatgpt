@@ -249,6 +249,7 @@
         padding: 0;
 
         box-sizing: border-box;
+        
     }
 
     &.has-messages {
@@ -588,6 +589,10 @@
 
     span {
         font-size: 16px;
+        a{
+            text-decoration: none;
+            color:#8493a3;
+        }
     }
 
     &:hover {

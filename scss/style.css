@@ -784,6 +784,10 @@ body {
 .suggestion span {
   font-size: 16px;
 }
+.suggestion span a {
+  text-decoration: none;
+  color: #8493a3;
+}
 .suggestion:hover {
   color: #e3e3e3;
 }
