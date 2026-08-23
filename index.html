@@ -18,19 +18,41 @@
         <div class="chatgpt__sidebar">
 
             <div class="chatgpt__sidebar--nav icon">
+
                 <div>
                     <p class="chat-logo">ChatGPT</p>
                 </div>
 
                 <div>
-                    <button class="search--icon icon">
+                    <button class="search--icon icon" type="button" aria-label="Search chats">
                         <img src="assets/search.svg" alt="" class="search-icon icon">
                     </button>
 
-                    <button class="collapse--btn icon">
+                    <button class="collapse--btn icon" type="button" aria-label="Collapse sidebar">
                         <img src="assets/layout-sidebar.svg" alt="" class="sidebar-icon icon">
                     </button>
                 </div>
+
+            </div>
+
+            <div class="chatgpt__sidebar--search">
+
+                <button class="sidebar-search-back icon" type="button" aria-label="Close search">
+                    <img src="assets/arrow-left.svg" alt="">
+                </button>
+
+                <div class="sidebar-search-box">
+
+                    <img src="assets/search.svg" alt="">
+
+                    <input type="text" class="sidebar-search-input" placeholder="Search chats" autocomplete="off">
+
+                    <button class="sidebar-search-clear icon" type="button" aria-label="Clear search">
+                        <img src="assets/close.svg" alt="">
+                    </button>
+
+                </div>
+
             </div>
 
             <div class="chatgpt__middle icon">
@@ -73,139 +95,11 @@
                     </div>
 
                 </div>
-                <!-- 
-                <div class="chatgpt__sidebar--bottom">
-
-                    <p class="chat-title">
-                        Recents
-                    </p>
-
-                    <div class="chat-item">
-                        <span>What is JavaScript?</span>
-                        <div class="chat-item__actions">
-                            <button class="chat-item__archive">
-                                <img src="assets/pin.svg" alt="">
-                            </button>
-                            <button class="chat-item__menu">
-                                <img src="assets/more.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Explain CSS Grid</span>
-                        <div class="chat-item__actions">
-                            <button class="chat-item__archive">
-                                <img src="assets/pin.svg" alt="">
-                            </button>
-                            <button class="chat-item__menu">
-                                <img src="assets/more.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Build a website</span>
-                        <div class="chat-item__actions">
-                            <button class="chat-item__archive">
-                                <img src="assets/pin.svg" alt="">
-                            </button>
-                            <button class="chat-item__menu">
-                                <img src="assets/more.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Learn SCSS</span>
-                        <div class="chat-item__actions">
-                            <button class="chat-item__archive">
-                                <img src="assets/pin.svg" alt="">
-                            </button>
-                            <button class="chat-item__menu">
-                                <img src="assets/more.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-
-                    <p class="chat-title">
-                        Yesterday
-                    </p>
-
-                    <div class="chat-item">
-                        <span>React interview questions</span>
-                        <div class="chat-item__actions">
-                            <button class="chat-item__archive">
-                                <img src="assets/pin.svg" alt="">
-                            </button>
-                            <button class="chat-item__menu">
-                                <img src="assets/more.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                        <div class="chat-item__actions">
-                            <button class="chat-item__archive">
-                                <img src="assets/pin.svg" alt="">
-                            </button>
-                            <button class="chat-item__menu">
-                                <img src="assets/more.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>React interview questions</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                    </div>
-
-                    <p class="chat-title">
-                        Last 7 days
-                    </p>
-
-                    <div class="chat-item">
-                        <span>React interview questions</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>React interview questions</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>React interview questions</span>
-                    </div>
-
-                    <div class="chat-item">
-                        <span>Portfolio design</span>
-                    </div>
-
-                </div> -->
-
 
                 <div class="chatgpt__sidebar--bottom">
                     <div class="chat-history"></div>
                 </div>
+
             </div>
 
             <div class="chatgpt__sidebar--footer icon">
@@ -247,7 +141,6 @@
 
             </div>
 
-
             <main class="chatgpt__content--middle">
 
                 <h1 class="icon">Ready when you are...</h1>
@@ -258,23 +151,30 @@
 
                     <button class="suggestion icon">
                         <img src="assets/image.svg" alt="">
-                        <span class="icon"><a href="" target="_blank">Create an image</a></span>
+                        <span class="icon">
+                            <a href="" target="_blank">Create an image</a>
+                        </span>
                     </button>
 
                     <button class="suggestion icon">
                         <img src="assets/pencil.svg" alt="">
-                        <span class="icon"><a href="" target="_blank">Write or edit</a></span>
+                        <span class="icon">
+                            <a href="" target="_blank">Write or edit</a>
+                        </span>
                     </button>
 
                     <button class="suggestion icon">
                         <img src="assets/globe.svg" alt="">
-                        <span class="icon"><a href="https://www.google.com/" target="_blank">Search the web</a></span>
+                        <span class="icon">
+                            <a href="https://www.google.com/" target="_blank">
+                                Search the web
+                            </a>
+                        </span>
                     </button>
 
                 </div>
 
             </main>
-
 
             <div class="chatgpt__content--bottom">
 
@@ -308,12 +208,14 @@
             </div>
 
         </div>
+
     </div>
 
     <script src="js/conversations.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/mock.js"></script>
+
 </body>
 
 </html>
